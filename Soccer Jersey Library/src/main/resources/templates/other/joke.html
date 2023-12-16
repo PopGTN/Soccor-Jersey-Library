@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+    <title id="pageTitle">Report</title>
+</head>
+<body>
+<style scoped="scoped">input:not(.hidden) {
+    display: inline-block;
+    float: right
+}
+
+.cd {
+    color: #F00 !important;
+    font-weight: bold;
+    margin-bottom: -48px
+}
+
+label {
+    margin-right: 8px
+}</style>
+
+<nav th:replace="fragments/navHeader :: navbar"></nav>
+<main class="container">
+<!--    <h2 class="title is-2">Pirate Translator</h2>-->
+    <div class=" border border-dark rounded px-5 py-5 bg-white border-2">
+        <h2 class="has-text-centered">Joke Generator</h2>
+        <!--
+            <form th:action="@{/callapi/pirate/submit}" method="post" class="wbb"
+                  style="display:inline-block;text-align:left!important">
+                <label>English: </label>
+                <input type="text" th:field="${apiDetail.english}"></input>
+                <br></br>
+                <label>Pirate: </label>
+                <input type="text" th:field="${apiDetail.pirate}"></input>
+                <br></br>
+                <button style="display:block;margin-top:24px!important" class="centered">Submit</button>
+            </form>
+        -->
+
+        <form th:action="@{/callapi/joke/submit}" method="post" class="col-12 col-lg-6 centered">
+            <div class="mb-3">
+                <label for="category" class="form-label ">Category: </label><select
+                    id="category" name="category" class="form-select " th:field="${apiDetail.category}">
+                <option value=" Any">Any</option>
+                <option value="Programming">Programming</option>
+                <option value="Misc">Misc</option>
+                <option value="Dark">Dark</option>
+                <option value="Pun">Pun</option>
+                <option value="Spooky">Spooky</option>
+                <option value="Christmas">Christmas</option>
+            </select>
+            </div>
+            <div class="mb-3">
+                <label for="number" class="form-label ">Number Of Jokes: </label>
+                <input type="number" id="number" name="number"
+                       value="0" class="form-control " min="1"
+                       max="10" th:field="${apiDetail.number}">
+            </div>
+            <button type="submit" class="btn btn-primary mt-3 ">Submit</button>
+        </form>
+    </div>
+    <br></br>
+    <output  class="border border-dark rounded px-5 py-5 bg-white border-2
+
+">
+        <h6>Output</h6>
+        <p th:text="${apiDetail.output}"></p>
+
+
+    </output>
+
+
+</main>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+
+</body>
+</html>

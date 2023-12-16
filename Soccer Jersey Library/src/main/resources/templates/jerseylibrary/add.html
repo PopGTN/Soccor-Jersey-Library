@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+    <title id="pageTitle" th:text="#{label.add.edit}">Label Add/Edit</title>
+</head>
+<body>
+<nav th:replace="fragments/navHeader :: navbar"></nav>
+<main class="container d-flex justify-content-center align-content-center flex-wrap">
+    <div class=" bg-white shadow p-3 mb-5 bg-body-tertiary rounded" style="width: fit-content; height: fit-content;">
+        <h2 class="has-text-centered" th:if="${soccorJerseys.id != null}" th:text="#{label.edit.jersey}">label Edit</h2>
+        <h2 class="has-text-centered" th:if="${soccorJerseys.id == null}" th:text="#{label.add.jersey}">label Add</h2>
+        <form th:action="@{/jerseylibrary/submit}" method="post" class=""
+              style="display:inline-block;text-align:left!important">
+            <div style="margin-bottom: 15px;">
+                <input class="hidden" hidden="hidden" type="text" readonly="readonly"
+                       th:field="${soccorJerseys.id}"></input>
+                <!--                <input class="form-control w-auto d-inline-block"  class="hidden" hidden="hidden" type="text" readonly="readonly" th:field="${soccorJerseys.jerseyCode}"></input>-->
+                <!--                <input class="form-control w-auto d-inline-block"  class="hidden" hidden="hidden" type="text" readonly="readonly" th:field="${ticketOrder.dateOfOrder}"></input>-->
+                <p>
+                    <label th:class="form-label" th:text="#{label.soccor.jersey.code}">label Jersey Code</label>
+                    <input class="form-control w-auto d-inline-block" type="number"
+                           th:field="${soccorJerseys.jerseyCode}"></input>
+                </p>
+                <p class="cd" th:if="${soccorJerseys.getJerseyCode() <= 0 && isSubmitted != null}" th:text="#{label.soccor.jersey.code.error}"></p>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <p><label th:class="form-label" th:text="#{label.soccor.jersey.name}">Player's Name: </label>
+                    <!--/*@thymesVar id="customerName" type=""*/-->
+                    <input class="form-control w-auto d-inline-block" type="text"
+                           th:field="${soccorJerseys.namePlayer}"></input>
+                </p>
+       <!--         <p class="cd" th:if="${#fields.hasErrors('${soccorJerseys.namePlayer}')}"
+                   th:errors="${soccorJerseys.namePlayer}"></p>-->
+                <p class="cd" th:if="${soccorJerseys.getNamePlayer()!= null and soccorJerseys.getNamePlayer().isEmpty()}" th:text="#{label.soccor.jersey.name.error}"></p>
+
+            </div>
+            <div style="margin-bottom: 15px;">
+                <p><label th:class="form-label" th:text="#{label.soccor.jersey.country}">Player's Country: </label>
+                    <!--/*@thymesVar id="customerName" type=""*/-->
+                    <input class="form-control w-auto d-inline-block" type="text"
+                           th:field="${soccorJerseys.nameCountry}"  list="countries" ></input>
+                    <datalist id="countries" >
+                        <option th:each="country,iterStat : ${countries}" th:text="${country}">country</option>
+                    </datalist>
+                </p>
+                <p class="cd" th:if="${soccorJerseys.getNameCountry()!=null and  soccorJerseys.getNameCountry().isEmpty() }" th:text="#{label.soccor.jersey.country.error}"></p>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <p><label th:class="form-label" th:text="#{label.soccor.jersey.club}">Player's Country: </label>
+                    <!--/*@thymesVar id="customerName" type=""*/-->
+                    <input class="form-control w-auto d-inline-block" type="text"
+                           th:field="${soccorJerseys.nameClub}"></input>
+
+                </p>
+                <p class="cd" th:if="${soccorJerseys.getNameClub()!= null and soccorJerseys.getNameClub().isEmpty()}" th:text="#{label.soccor.jersey.club.error}"></p>
+
+                <!--<p class="cd" th:if="${#fields.hasErrors('${soccorJerseys.nameClub}')}"
+                   th:errors="${soccorJerseys.nameClub}"></p>-->
+<!--                <p class="cd" th:if="${soccorJerseys.getNameClub()!= null and soccorJerseys.getNameClub().isEmpty()}" th:text="#{label.soccor.jersey.club.error}"></p>-->
+
+            </div>
+            <div style="margin-bottom: 15px;">
+                <p><label th:class="form-label" th:text="#{label.soccor.jersey.type}">Player's Country: </label>
+                    <!--/*@thymesVar id="customerName" type=""*/-->
+                    <select class="form-select w-auto d-inline-block" th:field="${soccorJerseys.nameType}">
+                        <option value="Home">Home</option>
+                        <option value="Away">Away</option>
+                    </select>
+                </p>
+<!--                <p class="cd" th:if="${#fields.hasErrors('${soccorJerseys.nameClub}')}"
+                   th:errors="${soccorJerseys.nameClub}"></p>-->
+            </div>
+            <div class="d-flex">
+                <button class="btn btn-primary mx-auto" th:text="#{label.submit.add}"
+                        th:if="${soccorJerseys.id == null}"
+                >label
+                    Submit3
+                </button>
+                <button class="btn btn-primary mx-auto" th:text="#{label.submit.edit}"
+                        th:if="${soccorJerseys.id != null}">label
+                    Submit32
+                </button>
+            </div>
+        </form>
+    </div>
+</main>
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

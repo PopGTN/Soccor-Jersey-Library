@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+    <title id="pageTitle">Report</title>
+</head>
+<body>
+<style scoped="scoped">
+    /*    input:not(.hidden) {
+        display: inline-block;
+        float: right
+    }*/
+
+    .cd {
+        color: #F00 !important;
+        font-weight: bold;
+        margin-bottom: -48px
+    }
+
+    label {
+        margin-right: 8px
+    }</style>
+<nav th:replace="fragments/navHeader :: navbar"></nav>
+<main class="container  d-flex justify-content-center align-content-center flex-wrap flex-column">
+    <div class="bg-white shadow p-3 mb-5 bg-body-tertiary rounded mx-auto" style="width: fit-content; height: fit-content;" >
+        <h2 class="has-text-centered" th:text="#{label.report.Jersey.Country.name}">_</h2>
+        <form th:action="@{/report/jersey/countryname/submit}" method="post" class="centered2">
+            <div class="mx-auto">
+                <label class="form-label w-auto">Country Name: </label>
+                <input class="form-control w-auto d-inline-block" type="text"
+                       th:field="${reportInput.countryName}"></input> <br>
+            </div>
+            <div class="d-flex justify-content-center align-content-center flex-wrap m-3 d-block">
+                <button class="btn btn-primary">Submit</button>
+            </div>
+
+        </form>
+        <p th:class="centered2" th:if="${#lists.isEmpty(soccorJerseys) and reportInput.submitted}"
+           th:text="#{error.message.no.data.found(${reportInput.countryName})}">test</p>
+    </div>
+
+    <table class="wbb centered oldTables" th:if="${not #lists.isEmpty(soccorJerseys)}"
+           style="padding:0!important;display:inline-block!important">
+        <tr><!--All style overrides still needed. Not a great way to force spacing between elements but works.-->
+            <th>ID</th>
+            <th class="a"></th>
+            <th>Jersey Code</th>
+            <th class="a"></th>
+            <th>Country</th>
+            <th class="a"></th>
+            <th>Type</th>
+            <th class="a"></th>
+            <th>Player</th>
+            <th class="a"></th>
+            <th>Club</th>
+            <th class="a"></th>
+        </tr>
+        <tr th:each="current,iterStat : ${soccorJerseys}">
+            <td th:text="${current.id}"></td>
+            <td></td>
+            <td th:text="${current.jerseyCode}"></td>
+            <td></td>
+            <td th:text="${current.nameCountry}"></td>
+            <td></td>
+            <td th:text="${current.nameType}"></td>
+            <td></td>
+            <td th:text="${current.namePlayer}"></td>
+            <td></td>
+            <td th:text="${current.nameClub}"></td>
+            <td></td>
+        </tr><!--Ignore this error, as there will only be one td (the if above).-->
+    </table>
+</main>
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

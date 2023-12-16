@@ -1,0 +1,183 @@
+/****************************************************************************
+Instruction to implement my css
+
+1. please make the main div from <div> to <main>
+
+2. add these to the header fragment of my to your Website.
+
+
+3. add this to you header Remove any older Bootstrap versions:
+
+    <!--Bootstrap 5.3.2 added JM 2023/10/26-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+4. Add this to you footer:
+
+    <!--Bootstrap 5.3.2 added JM 2023/10/26-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+
+5.  Grab my navHeader.html to you website. and modifie the links and text for you website.
+
+****************************************************************************/
+
+
+/*Mathew Elder provided (2023-10) the following style to fix our view issue with many columns.*/
+th{
+    white-space:normal
+}
+
+
+:root {
+    /*Variable for team color*/
+    /*light ac3e37 main 770711 dark 470000*/
+    --main-color-light: #00cc00;
+    --main-color-primary: #fcba03;
+    --main-color-dark: #008000;
+    --main-color-text: #fcba03;
+    --main-color-bright: #ffffff;
+
+}
+/*Copy everything under here*/
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--main-color-light);
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+footer {
+    flex-shrink: 0;
+}
+
+nav, .nav, .navbar {
+    margin-bottom: 50px;
+
+    background: var(--main-color-dark) !important;
+    position: sticky !important;
+}
+.navbar-brand, .navbar-brand:hover {
+    color: var(--main-color-primary);
+}
+
+.navbar-nav .nav-link.active, .navbar-nav, .nav-link.show, .nav-link, .nav-link:hover, .dropdown-toggle, .navbar-nav  .nav-link.show  {
+    color: var(--main-color-primary);
+}
+
+.cd {
+    color: #F00 !important;
+    /*    font-weight:bold;*/
+    /*    margin-bottom:-48px*/
+}
+
+label {
+    margin-right: 8px
+}
+
+.oldTables th, .oldTables  tr, .oldTables  td {
+    text-align: left;
+}
+
+.oldTables td {
+    padding: 0 !important
+}
+.oldTables tr, .oldTables thead, .oldTables th {
+    white-space: normal;
+}
+
+.oldTables tr th {
+    line-height: 1;
+    padding-bottom: 8px
+}
+
+.oldTables tr:nth-child(even) {
+    background-color: #FFF
+}
+
+.a {
+    padding: 0 32px 0 0
+}
+
+h2 {
+    /*    margin-bottom:-10px!important*/
+}
+
+.oldTables table, table.oldTables {
+    padding: 0 !important;
+    display: inline-block !important
+}
+
+.logo {
+    height: 40px
+}
+
+.no-link {
+    color: inherit
+}
+
+.no-link:hover {
+    text-decoration: none;
+    color: inherit
+}
+
+.ftr {
+    margin-top: 50px;
+    padding: 20px;
+    background: var(--main-color-dark);
+    color: var(--main-color-text);
+    bottom: 0;
+    /*    position:absolute;*/
+    width: 100%
+}
+
+
+.centered {
+    margin: 0 auto
+}
+
+
+.centered2, .has-text-centered {
+    text-align: center
+}
+
+form {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+
+.navbar-link, .navbar-link:focus, .navbar-bgn {
+    color: var(--main-color-text) !important
+}
+
+.title {
+    color: var(--main-color-bright) !important
+}
+
+body, p, strong, th {
+    color: #000 !important
+}
+
+
+.icon {
+    color: #0d6efd;
+}
+
+
+/*white background box.*/
+.wbb, .ddl {
+    padding: 0px 8px 0px 8px !important;
+    background-color: #ccc !important;
+    border: 8px #ccc solid !important;
+    border-radius: 12px !important;
+    /*white-space: nowrap !important;*/
+}
+
+
+
+
